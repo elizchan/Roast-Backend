@@ -2,7 +2,7 @@ exports.displayComments = (req, res) => {
     //find all cafes from model
 }
 exports.deleteComments = (req, res) => {
-    //model
+    //delete a comment with id from model
 }
 exports.addComments = (req, res) => {
     //model
