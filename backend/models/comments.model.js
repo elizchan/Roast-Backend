@@ -7,7 +7,7 @@ const Comments = mongoose.model(
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         }],
-        Content: Text,
+        Content: String,
         CafeId: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: "Cafe"

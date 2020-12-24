@@ -1,4 +1,4 @@
-import db, { user } from "../models/index"
+const db = require('../models/index')
 const Cafe = db.cafe
 const User = db.user
 //click add favorites adds Yelp Id to favorites array in user model and cafe model
