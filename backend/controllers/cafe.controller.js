@@ -1,4 +1,5 @@
 const db = require('../models/index')
+const { user } = require('../models/index')
 const Cafe = db.cafe
 const User = db.user
 //click add favorites adds Yelp Id to favorites array in user model and cafe model
@@ -21,15 +22,20 @@ exports.addCafe = (req, res) => {
     //     User.favorites.push(YelpId)
     //     res.send({message: "user favorites update"})
     // })
-    User.findByIdAndUpdate(id)
+    User.findByIdAndUpdate(id, {$push: {"favorites": YelpId}},
+    {new: true}
+    )
     .then((data)=>{
-        data.favorites.push(YelpId)
+        
+        
+        
         res.send(data)
+        
     })
     .catch(err=>{
         res.send(err)
     })
-    
+   
 }
 
 

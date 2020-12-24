@@ -15,6 +15,7 @@ exports.adminBoard = (req, res) => {
 }
 
 exports.getAllFavorites = (req, res) =>{
+    id = req.body.id
     User.findById(id)
     .then((data)=>{
         res.send(data)
