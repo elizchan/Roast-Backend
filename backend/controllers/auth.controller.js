@@ -16,6 +16,7 @@ exports.signup = (req, res) => {
         username: req.body.username,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 8)
+        
     })
     //save the user and if there is an error we throw that error
     //do we have to save everything we add to our databases?
