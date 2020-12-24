@@ -17,4 +17,3 @@ module.exports = function(app) {
     // app.post("/api/user/favorites", controller.addFavorites)
 }
 
-//Testing github

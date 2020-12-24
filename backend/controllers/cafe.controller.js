@@ -14,15 +14,25 @@ exports.addCafe = (req, res) => {
     //save cafe to current user
     cafe.save(cafe)
     //else push favorite to current user favorite
-    
+    const id = req.body.id
 
+    // User.findByIdAndUpdate(id)
+    // .then(()=> {
+    //     User.favorites.push(YelpId)
+    //     res.send({message: "user favorites update"})
+    // })
     User.findByIdAndUpdate(id)
-    .then((data)=> {
+    .then((data)=>{
         data.favorites.push(YelpId)
-        res.send({message: "user favorites update"})
+        res.send(data)
     })
     .catch(err=>{
         res.send(err)
     })
     
 }
+
+
+
+
+//Testing github
