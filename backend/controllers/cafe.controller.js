@@ -26,16 +26,11 @@ exports.addCafe = (req, res) => {
     {new: true}
     )
     .then((data)=>{
-        
-        
-        
         res.send(data)
-        
     })
     .catch(err=>{
         res.send(err)
     })
-   
 }
 
 
