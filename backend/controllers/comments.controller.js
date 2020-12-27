@@ -35,11 +35,18 @@ exports.addComment = (req, res) => {
     })
 }
 
-
-
-
 exports.editComments = (req, res) => {
-    //model
+    const userId = req.body.userId
+    const id = req.body.id
+    const Content = req.body.content
+    Comment.findOneAndUpdate({UserId: userId, _id: id}, {Content: Content}).then((data)=>{
+        res.send(data)
+    }).catch((err)=> {
+        res.status(500).send({
+            message:
+            err.message || "Some error occurred while updating the Comment"
+        })
+})
 }
 
 exports.deleteComments = (req, res) => {
