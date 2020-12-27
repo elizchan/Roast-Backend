@@ -4,6 +4,6 @@ module.exports = function(app) {
     app.post("/api/cafe/all", controller.addCafe)
 }
 
-module.exports = function(app) {
-    app.get("/api/cafe/all", controller.allCafes)
-}
+// module.exports = function(app) {
+//     app.get("/api/cafe/all", controller.allCafes)
+// }

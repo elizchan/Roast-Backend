@@ -7,7 +7,8 @@ const Comment = db.comments
 
 exports.displayComments = (req, res) => {
     //find all cafes from certain cafeId
-    Comment.find({CafeId: {$in: req.body.cafeId}}).then(data=>{
+
+    Comment.find({CafeId: req.body.cafeId}).then(data=>{
         res.send(data)
     })
     .catch(err=>{
@@ -23,28 +24,51 @@ exports.addComment = (req, res) => {
     const newComment = new Comment({
         Content: Content
     })
+    
         //save the new comment after finding in the cafe model where the ids are the same
         Cafe.findById(CafeId).then((cafe)=> {
             //add error here
-            newComment.CafeId.push(cafe)
-            newComment.save()
+            newComment.CafeId.push(cafe._id)
+            save()
+            
          })
          //now, do the same for userId
          User.findById(UserId).then((user)=> {
              //add error here
-            newComment.UserId.push(user)
-            newComment.save()
-            res.send(newComment)
+            newComment.UserId.push(user._id)
+            save()
          })
+      
+        res.send(newComment)
 }
 
 
 
 
-// exports.editComments = (req, res) => {
-//     //model
-// }
+exports.editComments = (req, res) => {
+    //model
+}
 
-// exports.deleteComments = (req, res) => {
-//     //delete a comment with id from model
-// }
+exports.deleteComments = (req, res) => {
+    //delete a comment with id from model
+    const userId = req.body.userId
+    const id = req.body.id
+
+    Comment.findOneAndDelete({UserId: userId, _id: id}, function(err){
+        if(err) {console.log(err)} else {console.log('successful deletion!')}
+    }).then(data=>{
+        res.send(data)
+    })
+}
+  
+    
+    // Comment.find({UserId: userId}).then((data)=>{
+    //         Comment.findByIdAndRemove(id, function(err, data){
+    //             if(err) {
+    //                 console.log(err)
+    //             } else {
+    //                 res.send("removed data:", data)
+    //             }
+    //         })
+        // })
+    //if comment has certain user id, then allow for delete

@@ -33,12 +33,12 @@ exports.addCafe = (req, res) => {
     })
 }
 
-exports.allCafes = (req,res) => {
-    Cafe.find()
-    .then(data => {
-        res.send(data)
-    })
-}
+// exports.allCafes = (req,res) => {
+//     Cafe.find()
+//     .then(data => {
+//         res.send(data)
+//     })
+// }
 
 
 
