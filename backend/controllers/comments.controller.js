@@ -6,36 +6,45 @@ const Comment = db.comments
 
 
 exports.displayComments = (req, res) => {
-    //find all cafes from certain YelpId
-    Comment.find().populate('User')
-    .exec(function(err, comment) {
-        if (err) {console.log(err)}
-        console.log(comment)
+    //find all cafes from certain cafeId
+    Comment.find({CafeId: {$in: req.body.cafeId}}).then(data=>{
+        res.send(data)
     })
-    // .then(data=>{
-    //     res.send(data)
-    // })
-    // .catch(err=>{
-    //     res.send(err)
-    // })
+    .catch(err=>{
+        res.send(err)
+    })
 }
-// exports.deleteComments = (req, res) => {
-//     //delete a comment with id from model
-// }
+
+
 exports.addComment = (req, res) => {
     const Content = req.body.content
-    const comment = new Comment({
-        Content: Content,
-        // CafeId: Cafe._YelpId
+    const CafeId = req.body.cafeId
+    const UserId = req.body.userId
+    const newComment = new Comment({
+        Content: Content
     })
-    comment.save((comment, err)=>{
-        if(err){
-            res.status(500).send({message: err})
-            return
-        }
-        res.send(comment, {message:"Comment created successfully."})
-    })
+        //save the new comment after finding in the cafe model where the ids are the same
+        Cafe.findById(CafeId).then((cafe)=> {
+            //add error here
+            newComment.CafeId.push(cafe)
+            newComment.save()
+         })
+         //now, do the same for userId
+         User.findById(UserId).then((user)=> {
+             //add error here
+            newComment.UserId.push(user)
+            newComment.save()
+            res.send(newComment)
+         })
 }
+
+
+
+
 // exports.editComments = (req, res) => {
 //     //model
+// }
+
+// exports.deleteComments = (req, res) => {
+//     //delete a comment with id from model
 // }
