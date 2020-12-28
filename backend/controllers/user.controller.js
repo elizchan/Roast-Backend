@@ -25,3 +25,14 @@ exports.getAllFavorites = (req, res) =>{
     })
 }
 
+exports.deleteFavorite = (req, res) => {
+    id = req.body.id
+    yelpId = req.body.yelpId
+    User.findByIdAndUpdate(id, {$pull: {favorites: yelpId}})
+    .then((data)=>{
+        res.send(data)
+    })
+    .catch((error)=>{
+        res.send(error)
+    })
+}

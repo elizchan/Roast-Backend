@@ -15,5 +15,6 @@ module.exports = function(app) {
     controller.adminBoard)
     app.get("/api/user/favorites", controller.getAllFavorites)
     // app.post("/api/user/favorites", controller.addFavorites)
+    app.delete("/api/user/favorites", controller.deleteFavorite)
 }
 
