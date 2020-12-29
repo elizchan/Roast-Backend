@@ -7,46 +7,46 @@ const User = db.user
 //look at auth controller example on user
 
 //original add cafe route
-// exports.addCafe = (req, res) => {
-//     //add a new cafe to model (model.create)
-//     const YelpId = req.body.YelpId
-//     //if yelp does not exist in db then run code below
-//     const cafe = new Cafe ({
-//         YelpId: YelpId
-//     })   
-//     //save cafe to current user
-//     cafe.save(cafe)
-//     //else push favorite to current user favorite
-//     const id = req.body.id
+exports.addCafe = (req, res) => {
+    //add a new cafe to model (model.create)
+    const YelpId = req.body.YelpId
+    //if yelp does not exist in db then run code below
+    const cafe = new Cafe ({
+        YelpId: YelpId
+    })   
+    //save cafe to current user
+    cafe.save(cafe)
+    //else push favorite to current user favorite
+    const id = req.body.id
 
-//     User.findByIdAndUpdate(id, {$push: {"favorites": YelpId}},
-//     {new: true}
-//     )
-//     .then((data)=>{
-//         res.send(data)
-//     })
-//     .catch(err=>{
-//         res.send(err)
-//     })
-// }
+    User.findByIdAndUpdate(id, {$push: {"favorites": YelpId}},
+    {new: true}
+    )
+    .then((data)=>{
+        res.send(data)
+    })
+    .catch(err=>{
+        res.send(err)
+    })
+}
 
 //just trying to add a cafe without the user model
-exports.addCafe = (req, res) => {
-        //add a new cafe to model (model.create)
-        const YelpId = req.body.YelpId
-        //if yelp does not exist in db then run code below
-        const cafe = new Cafe ({
-            YelpId: YelpId
-        })   
-        //save cafe to current user
-        cafe.save(cafe)
-        .then((data)=>{
-            res.send(data)
-        })
-        .catch(err=>{
-            res.send(err)
-        })
-}
+// exports.addCafe = (req, res) => {
+//         //add a new cafe to model (model.create)
+//         const YelpId = req.body.YelpId
+//         //if yelp does not exist in db then run code below
+//         const cafe = new Cafe ({
+//             YelpId: YelpId
+//         })   
+//         //save cafe to current user
+//         cafe.save(cafe)
+//         .then((data)=>{
+//             res.send(data)
+//         })
+//         .catch(err=>{
+//             res.send(err)
+//         })
+// }
 
 
 
