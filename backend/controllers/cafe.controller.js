@@ -30,23 +30,23 @@ exports.addCafe = (req, res) => {
     })
 }
 
-//just trying to add a cafe without the user model
-// exports.addCafe = (req, res) => {
-//         //add a new cafe to model (model.create)
-//         const YelpId = req.body.YelpId
-//         //if yelp does not exist in db then run code below
-//         const cafe = new Cafe ({
-//             YelpId: YelpId
-//         })   
-//         //save cafe to current user
-//         cafe.save(cafe)
-//         .then((data)=>{
-//             res.send(data)
-//         })
-//         .catch(err=>{
-//             res.send(err)
-//         })
-// }
+//add cafe's yelp id to the cafe model
+exports.addYelpId = (req, res) => {
+        //add a new cafe to model (model.create)
+        const YelpId = req.body.yelpId
+        //if yelp does not exist in db then run code below
+        const cafe = new Cafe ({
+            YelpId: YelpId
+        })   
+        //save cafe to current user
+        cafe.save(cafe)
+        .then((data)=>{
+            res.send(data)
+        })
+        .catch(err=>{
+            res.send(err)
+        })
+}
 
 
 
