@@ -34,9 +34,21 @@ exports.addCafe = (req, res) => {
 exports.addYelpId = (req, res) => {
         //add a new cafe to model (model.create)
         const YelpId = req.body.YelpId
+        const Name = req.body.Name
+        const Address = req.body.Address
+        const City= req.body.City
+        const Rating = req.body.Rating
+        const ImageURL= req.body.ImageURL
+        const YelpURL = req.body.YelpURL
         //if yelp does not exist in db then run code below
         const cafe = new Cafe ({
-            YelpId
+            YelpId,
+            Name,
+            Address,
+            City,
+            Rating,
+            ImageURL,
+            YelpURL
         })   
         //save cafe to current user
         cafe.save()
