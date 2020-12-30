@@ -12,7 +12,6 @@ const Comments = mongoose.model(
             type: mongoose.Schema.Types.ObjectId,
             ref: "Cafe"
         }]       
-        
     })
 )
 
