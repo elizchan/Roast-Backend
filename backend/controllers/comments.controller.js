@@ -1,13 +1,14 @@
 const db = require('../models/index')
 const Cafe = db.cafe
 const User = db.user
-const Comment = db.comments
+const Comment = db.comment
 
-
+//changing all ids to yelpIds - now comment model does not reference the cafe model but rather just references the yelpID
 
 exports.displayComments = (req, res) => {
     //find all cafes from certain cafeId
-    Comment.find({CafeId: req.body.cafeId}).then(data=>{
+    const cafeId = req.body.cafeId
+    Comment.find({cafeId: cafeId}).then(data=>{
         res.send(data)
     })
     .catch(err=>{
@@ -17,15 +18,16 @@ exports.displayComments = (req, res) => {
 
 
 exports.addComment = (req, res) => {
-    const Content = req.body.content
-    const CafeId = req.body.cafeId
-    const UserId = req.body.userId
-    const newComment = new Comment({
-        Content: Content,
-        UserId: UserId,
-        CafeId: CafeId
+    const userId = req.body.userId
+    const content = req.body.content
+    const cafeId = req.body.cafeId
+    const comment = new Comment({
+        userId,
+        content,
+        cafeId
     })
-    newComment.save(newComment).then((data)=> {
+    comment.save()
+    .then((data)=> {
         res.send(data)
     }).catch((err)=> {
         res.status(500).send({
@@ -37,9 +39,9 @@ exports.addComment = (req, res) => {
 
 exports.editComments = (req, res) => {
     const userId = req.body.userId
-    const id = req.body.id
-    const Content = req.body.content
-    Comment.findOneAndUpdate({UserId: userId, _id: id}, {Content: Content}).then((data)=>{
+    const yelpId = req.body.yelpId
+    const content = req.body.content
+    Comment.findOneAndUpdate({userId: userId, cafeId: yelpId}, {content: content}).then((data)=>{
         res.send(data)
     }).catch((err)=> {
         res.status(500).send({
@@ -52,9 +54,9 @@ exports.editComments = (req, res) => {
 exports.deleteComments = (req, res) => {
     //delete a comment with id from model
     const userId = req.body.userId
-    const id = req.body.id
+    const yelpId = req.body.yelpId
     //delete where user and id match commment
-    Comment.findOneAndDelete({UserId: userId, _id: id}, function(err){
+    Comment.findOneAndDelete({userId: userId, cafeId: yelpId}, function(err){
         if(err) {console.log(err)} else {console.log('successful deletion!')}
     }).then(data=>{
         res.send(data)

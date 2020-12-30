@@ -6,7 +6,7 @@ const db = {}
 db.user = require('./user.model')
 db.role = require('./role.model')
 db.cafe = require('./cafe.model')
-db.comments= require('./comments.model')
+db.comment= require('./comments.model')
 
 db.mongoose = mongoose
 
