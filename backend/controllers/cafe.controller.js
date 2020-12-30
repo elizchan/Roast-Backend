@@ -50,7 +50,6 @@ exports.addYelpId = (req, res) => {
             ImageURL,
             YelpURL
         })   
-        //save cafe to current user
         cafe.save()
         .then((data)=>{
             res.send(data)
