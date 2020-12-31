@@ -14,7 +14,8 @@ module.exports = function(app) {
     app.get("/api/test/admin", [authJwt.verifyWebToken, authJwt.isAdmin],
     controller.adminBoard)
     app.get("/api/user/favorites", controller.getAllFavorites)
-    // app.post("/api/user/favorites", controller.addFavorites)
+    app.put("/api/user/favorites", controller.addFavorites)
     app.delete("/api/user/favorites", controller.deleteFavorite)
+
 }
 

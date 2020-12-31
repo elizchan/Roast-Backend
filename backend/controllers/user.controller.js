@@ -36,3 +36,17 @@ exports.deleteFavorite = (req, res) => {
         res.send(error)
     })
 }
+
+exports.addFavorites = (req, res) => {
+    const id = req.body.id
+    const YelpId = req.body.YelpId
+    User.findByIdAndUpdate(id, {$push: {"favorites": YelpId}},
+    {new: true}
+    )
+    .then((data)=>{
+        res.send(data)
+    })
+    .catch(err=>{
+        res.send(err)
+    })
+}
