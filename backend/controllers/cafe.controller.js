@@ -1,5 +1,5 @@
 const db = require('../models/index')
-const { user, cafe } = require('../models/index')
+// const { user, cafe } = require('../models/index')
 const Cafe = db.cafe
 const User = db.user
 //click add favorites adds Yelp Id to favorites array in user model and cafe model
@@ -9,16 +9,16 @@ const User = db.user
 //original add cafe route
 exports.addCafe = (req, res) => {
     //add a new cafe to model (model.create)
-    const YelpId = req.body.YelpId
+    
     //if yelp does not exist in db then run code below
-    const cafe = new Cafe ({
-        YelpId: YelpId
-    })   
-    //save cafe to current user
-    cafe.save(cafe)
+    // const cafe = new Cafe ({
+    //     YelpId: YelpId
+    // })   
+    // //save cafe to current user
+    // cafe.save(cafe)
     //else push favorite to current user favorite
     const id = req.body.id
-
+    const YelpId = req.body.YelpId
     User.findByIdAndUpdate(id, {$push: {"favorites": YelpId}},
     {new: true}
     )
@@ -50,7 +50,7 @@ exports.addYelpId = (req, res) => {
             ImageURL,
             YelpURL
         })   
-        cafe.save()
+        cafe.save(cafe)
         .then((data)=>{
             res.send(data)
         })
@@ -59,14 +59,12 @@ exports.addYelpId = (req, res) => {
         })
 }
 
-
-
-// exports.allCafes = (req,res) => {
-//     Cafe.find()
-//     .then(data => {
-//         res.send(data)
-//     })
-// }
+exports.allCafes = (req,res) => {
+    Cafe.find()
+    .then(data => {
+        res.send(data)
+    })
+}
 
 
 
