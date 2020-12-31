@@ -9,33 +9,30 @@ const User = db.user
  
 //add new cafe and yelp information
 exports.addCafe = (req, res) => {
-        //add a new cafe to model (model.create)
-        const yelpId = req.body.id
+        const YelpId = req.body.yelpId
         const Name = req.body.Name
         const Address = req.body.Address
         const City = req.body.City
         const Rating = req.body.Rating
         const ImageURL = req.body.ImageURL
         const YelpURL = req.body.YelpURL
-        //if yelp does not exist in db then run code below
-        const cafe = new Cafe ({
-            yelpId,
+        const newCafe = new Cafe({
+            YelpId,
             Name,
             Address,
-            City,
-            Rating,
+            City, 
+            Rating, 
             ImageURL,
             YelpURL
-        })   
-        cafe.save()
-        
-        .then((data)=>{
-            res.send(data)
         })
-        .catch(err=>{
-            res.send(err, cafe)
+        newCafe.save((err, cafe)=>{
+            if (err) {
+                res.status(500).send({message: err})
+                return
+            } else {
+                res.send(cafe)
+            }
         })
-        console.log(cafe)
 }
 
 exports.allCafes = (req,res) => {
