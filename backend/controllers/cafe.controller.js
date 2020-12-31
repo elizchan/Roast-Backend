@@ -9,39 +9,28 @@ const User = db.user
  
 //add new cafe and yelp information
 exports.addCafe = (req, res) => {
-    const newCafe = new Cafe ({
-        yelpId: req.body.id
-    })
-    newCafe.save()
-    res.send('cafe saved')
-    
-}
-
-
-
-// exports.addCafe = (req, res) => {
-//         //add a new cafe to model (model.create)
-//         const yelpId = req.body.id
-//         //if yelp does not exist in db then run code below
-//         const cafe = new Cafe ({
-//             yelpId: req.body.id
-//             // Name,
-//             // Address,
-//             // City,
-//             // Rating,
-//             // ImageURL,
-//             // YelpURL
-//         })   
-//         cafe.save()
+        //add a new cafe to model (model.create)
+        const yelpId = req.body.id
+        //if yelp does not exist in db then run code below
+        const cafe = new Cafe ({
+            yelpId: req.body.id
+            // Name,
+            // Address,
+            // City,
+            // Rating,
+            // ImageURL,
+            // YelpURL
+        })   
+        cafe.save()
         
-//         .then((data)=>{
-//             res.send(data)
-//         })
-//         .catch(err=>{
-//             res.send(err, cafe)
-//         })
-//         console.log(cafe)
-// }
+        .then((data)=>{
+            res.send(data)
+        })
+        .catch(err=>{
+            res.send(err, cafe)
+        })
+        console.log(cafe)
+}
 
 exports.allCafes = (req,res) => {
     Cafe.find()
@@ -50,8 +39,3 @@ exports.allCafes = (req,res) => {
     })
 }
 
-
-
-
-
-//Testing github
