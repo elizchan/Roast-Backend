@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 const Cafe = mongoose.model(
     "Cafe",
     new mongoose.Schema({
-       YelpId: String
+       yelpId: String
     //    Name: String,
     //    Address: String,
     //    City: String,

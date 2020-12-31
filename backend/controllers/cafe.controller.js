@@ -9,33 +9,39 @@ const User = db.user
  
 //add new cafe and yelp information
 exports.addCafe = (req, res) => {
-        //add a new cafe to model (model.create)
-        const YelpId = req.body.YelpId
-        const Name = req.body.Name
-        const Address = req.body.Address
-        const City= req.body.City
-        const Rating = req.body.Rating
-        const ImageURL= req.body.ImageURL
-        const YelpURL = req.body.YelpURL
-        //if yelp does not exist in db then run code below
-        const cafe = new Cafe ({
-            YelpId
-            // Name,
-            // Address,
-            // City,
-            // Rating,
-            // ImageURL,
-            // YelpURL
-        })   
-        cafe.save(cafe)
-        console.log(cafe)
-        .then((data)=>{
-            res.send(data)
-        })
-        .catch(err=>{
-            res.send(err, cafe)
-        })
+    const newCafe = new Cafe ({
+        yelpId: req.body.id
+    })
+    newCafe.save()
+    res.send('cafe saved')
+    
 }
+
+
+
+// exports.addCafe = (req, res) => {
+//         //add a new cafe to model (model.create)
+//         const yelpId = req.body.id
+//         //if yelp does not exist in db then run code below
+//         const cafe = new Cafe ({
+//             yelpId: req.body.id
+//             // Name,
+//             // Address,
+//             // City,
+//             // Rating,
+//             // ImageURL,
+//             // YelpURL
+//         })   
+//         cafe.save()
+        
+//         .then((data)=>{
+//             res.send(data)
+//         })
+//         .catch(err=>{
+//             res.send(err, cafe)
+//         })
+//         console.log(cafe)
+// }
 
 exports.allCafes = (req,res) => {
     Cafe.find()
