@@ -15,7 +15,7 @@ exports.adminBoard = (req, res) => {
 }
 
 exports.getAllFavorites = (req, res) =>{
-    id = req.body.id
+    id = req.params.id
     User.findById(id)
     .then((data)=>{
         res.send(data)
@@ -26,7 +26,7 @@ exports.getAllFavorites = (req, res) =>{
 }
 
 exports.deleteFavorite = (req, res) => {
-    id = req.body.id
+    id = req.params.id
     yelpId = req.body.yelpId
     User.findByIdAndUpdate(id, {$pull: {favorites: yelpId}})
     .then((data)=>{
