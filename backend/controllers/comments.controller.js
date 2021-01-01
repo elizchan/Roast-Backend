@@ -12,6 +12,7 @@ exports.displayComments = (req, res) => {
     Comment.find().populate('userId')
     .exec(function(err, data){
         res.send(data)
+        
     // .then(data=>{
     //     res.send(data)
     // })
@@ -84,9 +85,11 @@ exports.deleteComments = (req, res) => {
     //     res.send(data)
     // })
     const id = req.body.id
-    Comment.findByIdAndRemove(id, {useFindAndModify: false}).then(data=>{
-        res.send('deleted comment: ',data)
+    Comment.findByIdAndRemove(id, {useFindAndModify: false})
+    .then(data=>{
+        res.status(200).send(data)
     })
+    .catch(err=>{console.log("error deleting comment:", err)})
 }
   
     
