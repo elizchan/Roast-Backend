@@ -61,10 +61,9 @@ console.log(comment)
 
 
 exports.editComments = (req, res) => {
-    const userId = req.body.userId
-    const yelpId = req.body.yelpId
+    const id = req.params.id
     const content = req.body.content
-    Comment.findOneAndUpdate({userId: userId, cafeId: yelpId}, {content: content}).then((data)=>{
+    Comment.findByIdAndUpdate(id, {content: content}).then((data)=>{
         res.send(data)
     }).catch((err)=> {
         res.status(500).send({
