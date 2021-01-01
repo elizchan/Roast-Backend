@@ -7,9 +7,9 @@ const Comment = db.comment
 
 exports.displayComments = (req, res) => {
     //find all cafes from certain cafeId
-    const cafeId = req.body.cafeId
+    const id = req.params.id
     // Comment.find({cafeId: cafeId}).populate('userId')
-    Comment.find().populate('userId')
+    Comment.find({cafeId: id}).populate('userId')
     .exec(function(err, data){
         res.send(data)
         
@@ -84,7 +84,7 @@ exports.deleteComments = (req, res) => {
     // }).then(data=>{
     //     res.send(data)
     // })
-    const id = req.body.id
+    const id = req.params.id
     Comment.findByIdAndRemove(id, {useFindAndModify: false})
     .then(data=>{
         res.status(200).send(data)
