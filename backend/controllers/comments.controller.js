@@ -75,8 +75,8 @@ exports.editComments = (req, res) => {
 
 exports.deleteComments = (req, res) => {
     //delete a comment with id from model
-    const userId = req.body.userId
-    const yelpId = req.body.yelpId
+    // const userId = req.body.userId
+    // const yelpId = req.body.yelpId
     //delete where user and id match commment
     // Comment.findOneAndDelete({userId: userId, cafeId: yelpId}, function(err){
     //     if(err) {console.log(err)} else {console.log('successful deletion!')}
@@ -84,9 +84,9 @@ exports.deleteComments = (req, res) => {
     //     res.send(data)
     // })
     const id = req.body.id
-    Comment.findOneAndDelete({_id: id}).then(data=>{
-            res.send(data)
-        })
+    Comment.findByIdAndRemove(id, {useFindAndModify: false}).then(data=>{
+        res.send('deleted comment: ',data)
+    })
 }
   
     
