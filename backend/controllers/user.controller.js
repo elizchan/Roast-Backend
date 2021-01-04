@@ -40,9 +40,10 @@ exports.deleteFavorite = (req, res) => {
 exports.addFavorites = (req, res) => {
     const id = req.body.id
     const YelpId = req.body.YelpId
-    User.findByIdAndUpdate(id, {$push: {"favorites": YelpId}},
-    {new: true}
-    )
+    User.findByIdAndUpdate(id, {$addToSet: {"favorites": YelpId}})
+    // User.findByIdAndUpdate(id, {$push: {"favorites": YelpId}},
+    // {new: true}
+    // )
     .then((data)=>{
         res.send(data)
     })
