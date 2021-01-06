@@ -19,3 +19,4 @@ https://github.com/SFX818/Team-8-frontend
     * npm -i
 ## Routes
 ## Challenges
+    * connecting front end to back end and make the connections work
