@@ -9,7 +9,7 @@ const User = db.user
  
 //add new cafe and yelp information
 exports.addCafe = (req, res) => {
-        const YelpId = req.body.yelpId
+        const YelpId = req.body.YelpId
         const Name = req.body.Name
         const Address = req.body.Address
         const City = req.body.City
@@ -35,10 +35,13 @@ exports.addCafe = (req, res) => {
         })
 }
 
-exports.allCafes = (req,res) => {
-    Cafe.find()
-    .then(data => {
+
+exports.findFavorite = (req, res) =>{
+   
+    Cafe.findOne({YelpId: req.params.id}) 
+    
+    .then(data =>{
+        console.log("!!!", req.params.id)
         res.send(data)
     })
 }
-

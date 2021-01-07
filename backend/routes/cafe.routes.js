@@ -2,5 +2,5 @@ const controller = require("../controllers/cafe.controller") //change to cafe co
 
 module.exports = function(app) {
     app.post("/api/cafe", controller.addCafe)
-    app.get("/api/cafe", controller.allCafes)
+    app.get("/api/cafe/favorite/:id", controller.findFavorite)
 }
