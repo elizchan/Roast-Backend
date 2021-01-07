@@ -18,5 +18,17 @@ https://roastbackend.herokuapp.com/
     * Fork and clone repo
     * npm -i
 ## Routes
+
+ROUTE |CRUD  |URL           |DESCRIPTION                          |
+GET   |Read  |“/”           |Home                                 |
+GET   |Read  |“/profile”    |Show user’s profile page.            |
+GET   |Read  |‘/results”    |Show user’s query for zipcode        |
+GET   |Read  |“/results/:id”|Shows specific cafe information      |
+POST  |Create|“/results/:id”|Leave a review for specific cafe     |
+POST  |Create|“/results/:id”|Add specific cafe to user’s favorites|
+PUT   |Update|“/results/:id”|User can edit their review           |
+DELETE|Delete|“/results/:id”|User can delete their review         |
+DELETE|Delete|“/profile”    |User can delete favorite from profile|
+
 ## Challenges
     * connecting front end to back end and make the connections work
