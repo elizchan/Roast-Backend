@@ -21,15 +21,18 @@ https://roastbackend.herokuapp.com/
 
 |ROUTE |CRUD  |URL           |DESCRIPTION                          |
 |------|------|--------------|-------------------------------------|
-|GET   |Read  |“/”           |Home                                 |
-|GET   |Read  |“/profile”    |Show user’s profile page.            |
-|GET   |Read  |‘/results”    |Show user’s query for zipcode        |
-|GET   |Read  |“/results/:id”|Shows specific cafe information      |
-|POST  |Create|“/results/:id”|Leave a review for specific cafe     |
-|POST  |Create|“/results/:id”|Add specific cafe to user’s favorites|
-|PUT   |Update|“/results/:id”|User can edit their review           |
-|DELETE|Delete|“/results/:id”|User can delete their review         |
-|DELETE|Delete|“/profile”    |User can delete favorite from profile|
+|POST  |Create|“/api/cafe” |Add searched cafe to cafe model.     |
+|GET   |Read  |"/api/cafe/favorite/:id”|Match a user's favorite cafe to a stored cafe.|
+|POST   |Create  |“/api/comments|Create a new comment.      |
+|GET  |Read|“/api/comments/:id”|Show all comments related to a specific cafe.     |
+|PUT  |Update|“/api/comments/:id”|User can edit a specific comment.|
+|DELETE   |Delete|“/api/comments/:id”|User can delete a specific comment.          |
+|PUT|Update|“/api/user/favorites”|Add a favorite cafe to user model.         |
+|GET|Read|“/api/user/favorites/:id”    |Display a specific user's favorite cafes.|
+|PUT|Update|“/api/user/favorites/:id”    |Delete a specific favorite cafe from the user model (removes an item from favorites array).|
 
 ## Challenges
+    * Referencing models and setting up controllers that allow for the manipulation of referenced data.
+    * Differentiating between req.body and req.params when making calls to the backend from the frontend.
+    * Troubleshooting frontend API calls when backend routes were functioning.
     * connecting front end to back end and make the connections work
