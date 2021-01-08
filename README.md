@@ -17,9 +17,9 @@ https://roastbackend.herokuapp.com/
     * MongoDB
     * Mongoose
 ## General Approach
-    * Determine models and their schemas.
-    * Construct RESTful routes for the manipulation of each model. 
-    * Write controller functions in mongoose that allow for the manipulation of the database's models.
+    * Construct models and their schemas required for application function.
+    * Develop RESTful routes that allow for appropriate controller functions to be utilized.
+    * Write controller functions that allow for proper manipulation of database models.
 ## Installation Instructions
     * Fork and clone repo
     * npm -i
