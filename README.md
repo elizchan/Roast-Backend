@@ -14,6 +14,8 @@ https://roastbackend.herokuapp.com/
 ## Technology
     * MongoDB
     * Mongoose
+## General Approach
+Back end was built first by thinking of what controllers, middlewares and routes were needed.
 ## Installation Instructions
     * Fork and clone repo
     * npm -i
