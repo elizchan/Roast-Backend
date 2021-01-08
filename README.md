@@ -12,8 +12,14 @@ https://github.com/SFX818/Team-8-frontend
 ## Link to Deployed API
 https://roastbackend.herokuapp.com/
 ## Technology
+    * Node js
+    * Express
     * MongoDB
     * Mongoose
+## General Approach
+    * Determine models and their schemas.
+    * Construct RESTful routes for the manipulation of each model. 
+    * Write controller functions in mongoose that allow for the manipulation of the database's models.
 ## Installation Instructions
     * Fork and clone repo
     * npm -i
