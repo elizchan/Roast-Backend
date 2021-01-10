@@ -50,9 +50,8 @@ exports.addCafe = (req, res) => {
 
 
 exports.findFavorite = (req, res) =>{
-   
-    Cafe.findOne({YelpId: req.body.YelpId}) 
-    
+    const YelpId = req.body.YelpId;
+    Cafe.findOne({YelpId: YelpId}) 
     .then(data =>{
         // console.log("!!!", req.body.YelpId)
         res.send(data)

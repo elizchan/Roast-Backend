@@ -12,13 +12,6 @@ exports.displayComments = (req, res) => {
     Comment.find({cafeId: id}).populate('userId')
     .exec(function(err, data){
         res.send(data)
-        
-    // .then(data=>{
-    //     res.send(data)
-    // })
-    // .catch(err=>{
-    //     res.send(err)
-    // })
 })
 }
 
