@@ -24,13 +24,14 @@ exports.addCafe = (req, res) => {
             Rating, 
             ImageURL,
             YelpURL
-        })
+        }, {unique:true})
         newCafe.save((err, cafe)=>{
             if (err) {
                 res.status(500).send({message: err})
                 return
             } else {
                 res.send(cafe)
+                console.log(cafe, "cafe saved")
             }
         })
 }
@@ -41,7 +42,10 @@ exports.findFavorite = (req, res) =>{
     Cafe.findOne({YelpId: req.body.YelpId}) 
     
     .then(data =>{
-        console.log("!!!", req.body.YelpId)
+        // console.log("!!!", req.body.YelpId)
         res.send(data)
     })
 }
+
+// DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#findandmodify
+// (Use `node --trace-deprecation ...` to show where the warning was created)
