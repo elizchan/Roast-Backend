@@ -17,22 +17,24 @@ exports.adminBoard = (req, res) => {
 
 exports.getAllFavorites = (req, res) => {
   id = req.params.id;
-  User.findById(id)
-    .populate("favorites")
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((error) => {
-      res.send(error);
-    });
+  User.findById(id).populate("favorites").exec(function(err, data){
+    res.send(data)
+})
+    // .then((data) => {
+    //   res.send(data);
+    // })
+    // .catch((error) => {
+    //   res.send(error);
+    // });
 };
 
 exports.deleteFavorite = (req, res) => {
   id = req.params.id;
-  yelpId = req.body.yelpId;
-  User.findByIdAndUpdate(id, { $pull: { favorites: yelpId } })
+  cafeId = req.body._id;
+  User.findByIdAndUpdate(id, { $pull: { favorites: cafeId } })
     .then((data) => {
       res.send(data);
+      data.save()
     })
     .catch((error) => {
       res.send(error);
@@ -56,15 +58,16 @@ exports.deleteFavorite = (req, res) => {
 
 exports.addFavorites = (req, res) => {
   //find user
-  let YelpId = req.body.YelpId;
+  let cafeId = req.body._id;
   let id = req.params.id;
-  Cafe.findOne({ YelpId: YelpId }).then((cafe) => {
-    res.send(cafe)
-    
-    User.findByIdAndUpdate(id, {$push: {favorites: {cafe}}})
+  Cafe.findById(cafeId).then((cafe) => {
+    // let cafeId = cafe._id
+    // console.log(cafeId)
+    User.findByIdAndUpdate(id)
     .then((user)=>{
-        // user.favorites.push({cafe})
-        user.save()
+        user.favorites.addToSet([cafe._id]) 
+        user.save(user)
+        res.send(user)
     })
     .catch(err=>{console.log('error here', err)})
 })
@@ -72,16 +75,7 @@ exports.addFavorites = (req, res) => {
 
 
 //     User.findByIdAndUpdate(id, { $push: { 'favorites': { cafe } } })
-//       .then((user) => {
-//         user.save((err) => {
-//           if (err) {
-//             res.status(500);
-//             console.log("there was an error");
-//             return;
-//           }
 
-//           console.log("no error!");
-//         });
 //         // res.send(user)
 //         // console.log('updated user:', user.populate('favorites'))
 //       })
@@ -91,3 +85,6 @@ exports.addFavorites = (req, res) => {
 //       });
 //   });
 // };
+exports.deleteCafes=(req,res)=>{
+    Cafe.deleteMany({YelpId: "dc_wr_Dy6ZfHFbo3p5HcXg"}).then(data=>{res.send(data)})
+}

@@ -17,6 +17,7 @@ module.exports = function(app) {
     app.put("/api/user/favorites/:id", controller.addFavorites)
     app.get("/api/user/favorites/:id", controller.getAllFavorites)
     app.put("/api/user/favorites/delete/:id", controller.deleteFavorite)
+    app.delete("/api/deleteCafes", controller.deleteCafes)
 
 }
 
