@@ -58,7 +58,7 @@ exports.deleteFavorite = (req, res) => {
 
 exports.addFavorites = (req, res) => {
   //find user
-  let cafeId = req.body._id;
+  let cafeId = req.params.cafeId;
   let id = req.params.id;
   Cafe.findById(cafeId).then((cafe) => {
     // let cafeId = cafe._id

@@ -1,6 +1,6 @@
 # Roast
 ## Frontend Repository
-https://github.com/SFX818/Team-8-frontend
+https://github.com/taylorschmidt/Roast-FrontEnd
 ## Deployed API
 https://roastbackend.herokuapp.com/
 ## Technology

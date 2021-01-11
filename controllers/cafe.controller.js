@@ -21,7 +21,8 @@ exports.addCafe = (req, res) => {
         console.log(err);
       }
       if (cafe) {
-        // console.log("this cafe already exists in the database")
+        console.log("this cafe already exists in the database")
+        res.send(cafe)
         return;
       } else {
         const newCafe = new Cafe({
@@ -39,7 +40,7 @@ exports.addCafe = (req, res) => {
             return;
           } else {
             res.send(cafe);
-            // console.log(cafe, "cafe saved");
+            console.log(cafe, "cafe saved");
           }
         });
       }
