@@ -77,6 +77,7 @@ exports.deleteComments = (req, res) => {
     //     res.send(data)
     // })
     const id = req.params.id
+    
     Comment.findByIdAndRemove(id, {useFindAndModify: false})
     .then(data=>{
         res.status(200).send(data)

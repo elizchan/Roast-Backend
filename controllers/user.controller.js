@@ -30,8 +30,8 @@ exports.getAllFavorites = (req, res) => {
 
 exports.deleteFavorite = (req, res) => {
   id = req.params.id;
-  cafeId = req.body._id;
-  User.findByIdAndUpdate(id, { $pull: { favorites: cafeId } })
+  cafeId = req.params.cafeId;
+  User.findByIdAndUpdate(id, { $pull: { favorites: cafeId } }, {useFindAndModify:false})
     .then((data) => {
       res.send(data);
       data.save()
