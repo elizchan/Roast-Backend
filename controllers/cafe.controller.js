@@ -2,9 +2,7 @@ const db = require('../models/index')
 // const { user, cafe } = require('../models/index')
 const Cafe = db.cafe
 const User = db.user
-//click add favorites adds Yelp Id to favorites array in user model and cafe model
-//make sure favorited cafe is the same across different users if multiple users like the same cafe
-//look at auth controller example on user
+
 
  
 //add new cafe and yelp information
@@ -59,5 +57,3 @@ exports.findFavorite = (req, res) =>{
     })
 }
 
-// DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#findandmodify
-// (Use `node --trace-deprecation ...` to show where the warning was created)
