@@ -1,6 +1,6 @@
 # Roast
 ## Frontend Repository
-https://github.com/taylorschmidt/Roast-FrontEnd
+https://github.com/elizchan/Roast-Front
 ## Deployed API
 https://roastbackend.herokuapp.com/
 ## Technology
